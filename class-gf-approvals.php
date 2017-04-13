@@ -358,7 +358,7 @@ class GF_Approvals extends GFFeedAddOn {
 				</ul>
 				<div>
 					<?php
-					if ( $current_user_is_approver ) {
+					if ( apply_filters('gravityformsapprovals/show_approval_buttons', $current_user_is_approver) ) {
 						?>
 						<form method="post" id="sidebar_form" enctype='multipart/form-data'>
 							<?php wp_nonce_field( 'gf_approvals' );	?>
