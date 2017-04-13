@@ -258,6 +258,8 @@ class GF_Approvals extends GFFeedAddOn {
 	 * @return string|void
 	 */
 	function update_approval_status( $key, $entry, $form ) {
+    if ( isset($entry['approval_status']) )
+      return $entry['approval_status'];
 		return 'pending';
 	}
 
@@ -362,10 +364,10 @@ class GF_Approvals extends GFFeedAddOn {
 						?>
 						<form method="post" id="sidebar_form" enctype='multipart/form-data'>
 							<?php wp_nonce_field( 'gf_approvals' );	?>
-							<button name="gf_approvals_status" value="approved" type="submit" class="button">
+							<button name="gf_approvals_status" value="approved" type="submit" class="button" <?php echo $status == 'approved' ? 'disabled' : ''; ?>>
 								<?php echo $approve_icon; ?> <?php _e( 'Approve', 'gravityformsapprovals' ); ?>
 							</button>
-							<button name="gf_approvals_status" value="rejected" type="submit" class="button">
+							<button name="gf_approvals_status" value="rejected" type="submit" class="button" <?php echo $status == 'rejected' ? 'disabled' : ''; ?>>
 								<?php echo $reject_icon; ?> <?php _e( 'Reject', 'gravityformsapprovals' ); ?>
 							</button>
 						</form>
