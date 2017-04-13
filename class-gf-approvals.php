@@ -351,7 +351,7 @@ class GF_Approvals extends GFFeedAddOn {
 							}
 						}
 					}
-					if ( $has_been_approved ) {
+					if ( apply_filters('gravityformsapprovals/remove_update_button', $has_been_approved) ) {
 						add_action( 'gform_entrydetail_update_button', array( $this, 'remove_entrydetail_update_button' ), 10 );
 					}
 					?>
